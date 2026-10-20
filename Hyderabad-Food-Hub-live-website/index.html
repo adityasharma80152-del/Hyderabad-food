@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#d94820" />
+    <meta name="description" content="Order food from Hyderabad's local favourites." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Hyderabad Food Hub</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Hyderabad Food Hub home"><span>🍲</span> Hyderabad Food Hub</a>
+      <button class="location" type="button" aria-label="Change delivery location">📍 Hyderabad <span>⌄</span></button>
+      <a class="portal-link" href="portal.html">Restaurant portal</a>
+      <button class="signin" id="signIn" type="button">Sign in</button>
+      <button class="cart-button" id="cartButton" type="button">Cart <span id="cartCount">0</span></button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">HYDERABAD'S FOOD, DELIVERED</p>
+        <h1>What are you hungry for?</h1>
+        <p>Discover local favourites, from biryani to bakery treats.</p>
+        <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search restaurants or dishes" /></label>
+      </section>
+
+      <section class="content" aria-label="Restaurants">
+        <div class="section-heading"><div><p class="eyebrow">EXPLORE</p><h2>Top picks near you</h2></div><button class="text-button" type="button" id="viewAll">View all</button></div>
+        <div class="filters" id="filters" aria-label="Cuisine filters"></div>
+        <div class="restaurant-grid" id="restaurantGrid"></div>
+      </section>
+    </main>
+
+    <aside class="cart-panel" id="cartPanel" aria-label="Your cart" aria-hidden="true">
+      <div class="cart-header"><h2>Your order</h2><button class="close" id="closeCart" type="button" aria-label="Close cart">×</button></div>
+      <div id="cartItems" class="cart-items"><p class="empty">Your cart is empty.<br />Find something delicious!</p></div>
+      <div class="cart-footer" id="cartFooter" hidden>
+        <div class="total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+        <button class="primary" id="checkout" type="button">Continue to checkout</button>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <dialog id="menuDialog">
+      <div class="dialog-header"><div><p class="eyebrow" id="dialogCuisine"></p><h2 id="dialogTitle"></h2><p id="dialogMeta"></p></div><button class="close" id="closeMenu" type="button">×</button></div>
+      <div class="menu-list" id="menuList"></div>
+    </dialog>
+
+    <dialog id="checkoutDialog">
+      <div class="dialog-header"><div><p class="eyebrow">ALMOST THERE</p><h2>Complete your order</h2></div><button class="close" id="closeCheckout" type="button">×</button></div>
+      <form id="orderForm">
+        <label>Name<input name="customerName" required placeholder="Your name" /></label>
+        <label>Phone number<input name="customerPhone" required inputmode="tel" placeholder="10-digit mobile number" /></label>
+        <fieldset><legend>How would you like your food?</legend><label><input type="radio" name="fulfilment" value="Delivery" checked /> Delivery</label><label><input type="radio" name="fulfilment" value="Pickup" /> Pickup</label></fieldset>
+        <fieldset id="deliveryPartner"><legend>Delivery service</legend><label><input type="radio" name="deliveryPartner" value="Restaurant delivery" checked /> Restaurant delivery</label><label><input type="radio" name="deliveryPartner" value="Food Hub rider" /> Food Hub rider</label></fieldset>
+        <fieldset><legend>Payment method</legend><label><input type="radio" name="payment" value="Cash on delivery" checked /> Cash on delivery</label><label><input type="radio" name="payment" value="Pay online" disabled /> Pay online (coming soon)</label></fieldset>
+        <button class="primary" type="submit">Place order</button>
+      </form>
+    </dialog>
+    <dialog id="authDialog">
+      <div class="dialog-header"><div><p class="eyebrow">WELCOME</p><h2>Sign in to Food Hub</h2></div><button class="close" id="closeAuth" type="button">×</button></div>
+      <form id="authForm"><label>Mobile number<input required inputmode="tel" placeholder="10-digit mobile number" /></label><button class="primary" type="submit">Continue</button><p class="form-note">Demo mode: any 10-digit number works. Your orders are saved on this device.</p></form>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+    <script src="live-orders.js"></script>
+    <script src="enhanced.js"></script>
+  </body>
+</html>
